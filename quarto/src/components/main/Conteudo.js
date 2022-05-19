@@ -1,4 +1,9 @@
 export default function Conteudo(props){
+
+  const passarDados = (pr)=>{
+    props.acao(pr)
+  }
+
     return(
         <div className="conteudo">
             <h2>Produtos</h2>
@@ -6,11 +11,11 @@ export default function Conteudo(props){
             <div className="produtos">
               {
                  props.dados.map((itens, ix)=>(
-                    <div key={ix}>
+                    <div key={ix} onClick={()=> passarDados(itens.msg)}>
                       <h3>{itens.nome}</h3>
                       <p>{itens.decricao}</p>  
                       <p>{itens.categoria}</p>
-                      <p className="preco">{itens.preco}</p>
+                      <p className="preco">R$ {itens.preco}</p>
                     </div>     
                  )) 
               }
